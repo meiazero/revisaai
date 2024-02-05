@@ -1,0 +1,20 @@
+{
+	// Explorer
+	"explorer.compactFolders": false,
+	"explorer.confirmDragAndDrop": false,
+	"explorer.confirmDelete": false,
+	"explorer.fileNesting.enabled": true,
+	"explorer.fileNesting.patterns": {
+		"package.json": ".eslint*, prettier*, tsconfig*, vite*, pnpm-lock*, bun.lockb, nest*, .tool-versions, .editorconfig, .gitignore, .gitattributes, .prettierrc*, .prettierignore, .eslintrc, .eslintignore, .stylelintrc, .stylelintignore, .browserslistrc, .nvmrc, .npmrc, .nvm",
+		"tailwind.config.js": "tailwind.config*, postcss.config*",
+		"tailwind.config.ts": "tailwind.config*, postcss.config*",
+		".env.local": ".env*",
+		".env": ".env*"
+	},
+	"editor.codeActionsOnSave": {
+		"source.fixAll.eslint": "explicit",
+		"source.fixAll": "always",
+		"source.organizeImports": "always"
+	},
+	"window.zoomLevel": 1.5
+}
