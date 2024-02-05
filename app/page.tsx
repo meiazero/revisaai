@@ -7,7 +7,7 @@ export default function Page() {
 			<Hero />
 			<div className="flex w-full flex-col items-center py-6">
 				<Image
-					src="/interface.png"
+					src="/interface.webp"
 					alt="interface"
 					width={600}
 					height={300}
