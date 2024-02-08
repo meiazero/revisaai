@@ -10,7 +10,7 @@ interface ApiKeyCardProps {
 	onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-export default function ApiKeyCard({
+export function ApiKeyCard({
 	className,
 	onClick,
 	value,

@@ -6,7 +6,7 @@ interface MainContentProps {
 	children: React.ReactNode;
 }
 
-export default function MainContent({ children, className }: MainContentProps) {
+export function MainContent({ children, className }: MainContentProps) {
 	return (
 		<main className={cn("container flex min-h-[calc(100vh-10rem)]", className)}>
 			{children}

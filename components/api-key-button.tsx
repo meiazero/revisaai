@@ -2,10 +2,10 @@
 
 import { Key } from "lucide-react";
 import { useState } from "react";
-import ApiKeyCard from "./api-key-card";
+import { ApiKeyCard } from "./api-key-card";
 import { Button } from "./ui/button";
 
-export default function ApikeyButton() {
+export function ApikeyButton() {
 	const [isVisible, setIsVisible] = useState<boolean>(false);
 	const [inputValue, setInputValue] = useState<string>("");
 

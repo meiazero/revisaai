@@ -2,7 +2,7 @@ import { userDropdownItems, userListItems } from "@/config/userMenuConfig";
 import Link from "next/link";
 import { Icons } from "./icons";
 import { NavMenuDropDown } from "./nav-menu-dropdown";
-import NavMenuList from "./nav-menu-list";
+import { NavMenuList } from "./nav-menu-list";
 import { WaitingListPopup } from "./waiting-list-popup";
 
 export function Header() {

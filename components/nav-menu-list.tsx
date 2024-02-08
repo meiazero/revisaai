@@ -7,7 +7,7 @@ interface NavMenuListProps {
 	listItems: Array<Listitems>;
 }
 
-export default function NavMenuList({ listItems }: NavMenuListProps) {
+export function NavMenuList({ listItems }: NavMenuListProps) {
 	return (
 		<div className="hidden md:block">
 			<ul className="flex flex-row gap-4  ">

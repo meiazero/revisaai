@@ -1,5 +1,5 @@
 import { Hero } from "@/components/hero";
-import MainContent from "@/components/layout/main-content";
+import { MainContent } from "@/components/layout/main-content";
 import Image from "next/image";
 
 export default function Page() {

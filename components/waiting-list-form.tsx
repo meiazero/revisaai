@@ -26,7 +26,7 @@ const formSchema = z.object({
 	}),
 });
 
-export default function WaitingListForm() {
+export function WaitingListForm() {
 	const [isLoading, setIsLoading] = React.useState<boolean>(false);
 	const form = useForm<z.infer<typeof formSchema>>({
 		resolver: zodResolver(formSchema),
