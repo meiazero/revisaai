@@ -7,26 +7,21 @@ import {
 	DropdownMenuSeparator,
 	DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { NavItem } from "@/types";
+import { DropDownItems, NavItem } from "@/types";
 import { Menu } from "lucide-react";
 import Link from "next/link";
 
-export interface DropDownItems {
-	title: string;
-	items: Array<NavItem>;
-}
-
-interface UserDropDownProps {
+interface NavMenuDropDownProps {
 	dropDownItems: Array<DropDownItems>;
 }
 
-export function NavMenuDropDown({ dropDownItems }: UserDropDownProps) {
+export function NavMenuDropDown({ dropDownItems }: NavMenuDropDownProps) {
 	return (
 		<DropdownMenu>
 			<DropdownMenuTrigger className="block md:hidden">
 				<Menu className="size-8" />
 			</DropdownMenuTrigger>
-			<DropdownMenuContent align="end">
+			<DropdownMenuContent align="end" className="block md:hidden">
 				{dropDownItems.map(item => (
 					<div key={item.title}>
 						<DropdownMenuLabel>{item.title}</DropdownMenuLabel>
