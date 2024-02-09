@@ -5,6 +5,7 @@ import { cn } from "@/lib/utils";
 import "@/styles/globals.css";
 import type { Metadata } from "next";
 import { Nunito_Sans as Font } from "next/font/google";
+import "react-loading-skeleton/dist/skeleton.css";
 
 const font = Font({
 	subsets: ["latin"],
