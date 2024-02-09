@@ -1,11 +1,24 @@
 "use client";
 
+import { promptSchema } from "@/config/promptSchema";
 import { cn } from "@/lib/utils";
+import { zodResolver } from "@hookform/resolvers/zod";
 import { Sparkle, Sparkles } from "lucide-react";
 import { useState } from "react";
+import { useForm } from "react-hook-form";
+import { toast } from "sonner";
+import { z } from "zod";
 import { AdvancedSettings } from "./advanced-settings";
+import { advancedFormDefaultValues } from "./advanced-settings-form";
 import { Button } from "./ui/button";
-import { Label } from "./ui/label";
+import {
+	Form,
+	FormControl,
+	FormField,
+	FormItem,
+	FormLabel,
+	FormMessage,
+} from "./ui/form";
 import { Separator } from "./ui/separator";
 import { Textarea } from "./ui/textarea";
 
@@ -17,51 +30,78 @@ export function SideNavBar({ className }: SideNavBarProps) {
 	const [isVisible, setIsVisible] = useState<boolean>(false);
 	const [isLoading, setIsLoading] = useState<boolean>(false);
 
+	const form = useForm<z.infer<typeof promptSchema>>({
+		defaultValues: advancedFormDefaultValues,
+		resolver: zodResolver(promptSchema),
+	});
+
 	const handlerVisible = () => {
 		setIsVisible(!isVisible);
 	};
 
 	// temporary handler
-	const handlerSubmit = () => {
+	// @ts-ignore
+	const handlerSubmit = async (data: z.infer<typeof promptSchema>) => {
 		setIsLoading(!isLoading);
-		setTimeout(() => {
-			setIsLoading(false);
-		}, 5000);
+		try {
+			await new Promise(resolve => setTimeout(resolve, 2000));
+
+			toast.success("Texto corrigido com sucesso!", {
+				description:
+					"O texto foi corrigido com sucesso. Verifique as sugestões.",
+				duration: 3000,
+			});
+		} catch (error) {
+			toast.error("Erro ao corrigir texto. Tente novamente.");
+		} finally {
+			setIsLoading(isLoading);
+		}
 	};
 
 	return (
 		<aside
-			className={cn(
-				"space-y-4 border-b border-zinc-300 p-4 md:border-e",
-				className,
-			)}
+			className={cn(" border-b border-zinc-300 p-4 md:border-e", className)}
 		>
-			<Label className=" font-semibold">Texto para revisar</Label>
-			<Textarea className="w-full" />
+			<Form {...form}>
+				<form onSubmit={form.handleSubmit(handlerSubmit)} className="space-y-4">
+					<FormField
+						name="middlePrompt"
+						render={({ field }) => (
+							<FormItem>
+								<FormLabel className="font-semibold">Texto Inicial</FormLabel>
+								<FormControl>
+									<Textarea {...field} />
+								</FormControl>
+								<FormMessage />
+							</FormItem>
+						)}
+					/>
 
-			<Separator />
-			<AdvancedSettings onClick={handlerVisible} visibility={isVisible} />
-			<Separator />
-			<Button
-				className="w-full font-semibold"
-				onClick={handlerSubmit}
-				disabled={isLoading}
-			>
-				{isLoading ? (
-					<>
-						<div>
-							<Sparkles className="absolute mr-2 size-4 animate-appear-disappear delay-700" />
-							<Sparkle className="mr-2 size-4 animate-appear-disappear delay-1000" />
-						</div>
-						<p>Corrigindo...</p>
-					</>
-				) : (
-					<>
-						<Sparkles className="mr-2 size-4" />
-						<p>Corrigir com IA</p>
-					</>
-				)}
-			</Button>
+					<Separator />
+					<AdvancedSettings onClick={handlerVisible} visibility={isVisible} />
+					<Separator />
+					<Button
+						className="w-full font-semibold"
+						type="submit"
+						disabled={isLoading}
+					>
+						{isLoading ? (
+							<>
+								<div>
+									<Sparkles className="absolute mr-2 size-4 animate-appear-disappear delay-700" />
+									<Sparkle className="mr-2 size-4 animate-appear-disappear delay-1000" />
+								</div>
+								<p>Corrigindo...</p>
+							</>
+						) : (
+							<>
+								<Sparkles className="mr-2 size-4" />
+								<p>Corrigir com IA</p>
+							</>
+						)}
+					</Button>
+				</form>
+			</Form>
 		</aside>
 	);
 }

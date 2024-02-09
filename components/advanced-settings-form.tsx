@@ -1,7 +1,7 @@
 "use client";
 
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
+import { promptSchema } from "@/config/promptSchema";
+import { useFormContext } from "react-hook-form";
 import { z } from "zod";
 import {
 	Form,
@@ -13,23 +13,16 @@ import {
 } from "./ui/form";
 import { Textarea } from "./ui/textarea";
 
-const advancedFormSchema = z.object({
-	initialPrompt: z.string(),
-	endPrompt: z.string(),
-});
-
-const advancedFormDefaultValues: Partial<z.infer<typeof advancedFormSchema>> = {
-	initialPrompt:
-		"Tenho um texto para ser revisado, onde pode haver erros de escrita, conjugações, ou até mesmo de concordância. A seguir, o texto:",
-	endPrompt:
-		"Verifique a gramática deste texto e sugira correções, se necessário.",
-};
+export const advancedFormDefaultValues: Partial<z.infer<typeof promptSchema>> =
+	{
+		initialPrompt:
+			"Tenho um texto para ser revisado, onde pode haver erros de escrita, conjugações, ou até mesmo de concordância. A seguir, o texto:",
+		endPrompt:
+			"Verifique a gramática deste texto e sugira correções, se necessário.",
+	};
 
 export function AdvancedSettingsForm() {
-	const form = useForm<z.infer<typeof advancedFormSchema>>({
-		defaultValues: advancedFormDefaultValues,
-		resolver: zodResolver(advancedFormSchema),
-	});
+	const form = useFormContext<z.infer<typeof promptSchema>>();
 
 	return (
 		<Form {...form}>
