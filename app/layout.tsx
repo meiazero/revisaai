@@ -16,9 +16,28 @@ const font = Font({
 });
 
 export const metadata: Metadata = {
+	metadataBase: new URL("https://revisaai.meiazero.dev"),
 	title: "RevisaAi",
 	description:
 		"utilize IA para revisar seus textos de forma eficiente e rápida.",
+	twitter: {
+		card: "summary_large_image",
+		site: "https://revisaai.meiazero.dev",
+		creator: "@meiazero",
+		title: "RevisaAi",
+		description:
+			"utilize IA para revisar seus textos de forma eficiente e rápida.",
+		images: ["/og.png"],
+	},
+	openGraph: {
+		locale: "pt_BR",
+		url: "https://revisaai.meiazero.dev",
+		title: "RevisaAi",
+		description:
+			"utilize IA para revisar seus textos de forma eficiente e rápida.",
+		type: "website",
+		images: ["/og.png"],
+	},
 };
 
 interface RootLayoutProps {
