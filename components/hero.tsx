@@ -1,4 +1,5 @@
-import { WaitingListPopup } from "./waiting-list-popup";
+import Link from "next/link";
+import { Button } from "./ui/button";
 
 export function Hero() {
 	return (
@@ -14,7 +15,12 @@ export function Hero() {
 			</div>
 
 			<div className="mx-auto w-full md:w-1/2">
-				<WaitingListPopup />
+				<Button
+					className="w-full bg-gradient-to-tr from-yellow-500 to-orange-400 font-bold"
+					asChild
+				>
+					<Link href="/app">Ir para o App</Link>
+				</Button>
 			</div>
 		</div>
 	);

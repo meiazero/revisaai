@@ -31,7 +31,7 @@ export function AdvancedSettingsForm() {
 					name="initialPrompt"
 					render={({ field }) => (
 						<FormItem>
-							<FormLabel className="font-semibold">Texto Inicial</FormLabel>
+							<FormLabel className="font-semibold">Prompt Inicial</FormLabel>
 							<FormControl>
 								<Textarea {...field} />
 							</FormControl>
@@ -44,7 +44,7 @@ export function AdvancedSettingsForm() {
 					name="endPrompt"
 					render={({ field }) => (
 						<FormItem>
-							<FormLabel className="font-semibold">Texto Final</FormLabel>
+							<FormLabel className="font-semibold">Prompt Final</FormLabel>
 							<FormControl>
 								<Textarea {...field} />
 							</FormControl>
