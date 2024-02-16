@@ -1,5 +1,5 @@
 import { DropDownItems, NavItem } from "@/types";
-import { BadgeDollarSign, Clock2, Info } from "lucide-react";
+import { BadgeDollarSign, Info, Pen } from "lucide-react";
 
 export const userDropdownItems: Array<DropDownItems> = [
 	{
@@ -18,9 +18,9 @@ export const userDropdownItems: Array<DropDownItems> = [
 				isActive: true,
 			},
 			{
-				title: "Lista de espera",
-				href: "/waiting-list",
-				icon: Clock2,
+				title: "App",
+				href: "/app",
+				icon: Pen,
 				isActive: true,
 			},
 		],

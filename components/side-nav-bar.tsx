@@ -1,12 +1,9 @@
-"use client";
-
 import { promptSchema } from "@/config/promptSchema";
 import { cn } from "@/lib/utils";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Sparkle, Sparkles } from "lucide-react";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { toast } from "sonner";
 import { z } from "zod";
 import { AdvancedSettings } from "./advanced-settings";
 import { advancedFormDefaultValues } from "./advanced-settings-form";
@@ -24,11 +21,16 @@ import { Textarea } from "./ui/textarea";
 
 interface SideNavBarProps {
 	className?: string;
+	onSubmit: (data: z.infer<typeof promptSchema>) => void;
+	isLoading: boolean;
 }
 
-export function SideNavBar({ className }: SideNavBarProps) {
+export function SideNavBar({
+	className,
+	onSubmit,
+	isLoading,
+}: SideNavBarProps) {
 	const [isVisible, setIsVisible] = useState<boolean>(false);
-	const [isLoading, setIsLoading] = useState<boolean>(false);
 
 	const form = useForm<z.infer<typeof promptSchema>>({
 		defaultValues: advancedFormDefaultValues,
@@ -39,38 +41,21 @@ export function SideNavBar({ className }: SideNavBarProps) {
 		setIsVisible(!isVisible);
 	};
 
-	// temporary handler
-	// @ts-ignore
-	const handlerSubmit = async (data: z.infer<typeof promptSchema>) => {
-		setIsLoading(!isLoading);
-		try {
-			await new Promise(resolve => setTimeout(resolve, 2000));
-
-			toast.success("Texto corrigido com sucesso!", {
-				description:
-					"O texto foi corrigido com sucesso. Verifique as sugestões.",
-				duration: 3000,
-			});
-		} catch (error) {
-			toast.error("Erro ao corrigir texto. Tente novamente.");
-		} finally {
-			setIsLoading(isLoading);
-		}
-	};
-
 	return (
 		<aside
 			className={cn(" border-b border-zinc-300 p-4 md:border-e", className)}
 		>
 			<Form {...form}>
-				<form onSubmit={form.handleSubmit(handlerSubmit)} className="space-y-4">
+				<form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
 					<FormField
 						name="middlePrompt"
 						render={({ field }) => (
 							<FormItem>
-								<FormLabel className="font-semibold">Texto Inicial</FormLabel>
+								<FormLabel className="font-semibold">
+									Texto para revisão
+								</FormLabel>
 								<FormControl>
-									<Textarea {...field} />
+									<Textarea rows={15} {...field} />
 								</FormControl>
 								<FormMessage />
 							</FormItem>

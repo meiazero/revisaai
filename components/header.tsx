@@ -3,7 +3,7 @@ import Link from "next/link";
 import { Icons } from "./icons";
 import { NavMenuDropDown } from "./nav-menu-dropdown";
 import { NavMenuList } from "./nav-menu-list";
-import { WaitingListPopup } from "./waiting-list-popup";
+import { Button } from "./ui/button";
 
 export function Header() {
 	return (
@@ -18,7 +18,12 @@ export function Header() {
 
 				<div className="flex flex-row items-center gap-4 md:gap-8">
 					{/* Button cta */}
-					<WaitingListPopup className="hidden md:flex" />
+					<Button
+						className="hidden w-full bg-gradient-to-tr from-yellow-500 to-orange-400 font-bold md:flex"
+						asChild
+					>
+						<Link href="/app">Ir para o App</Link>
+					</Button>
 					<NavMenuDropDown dropDownItems={userDropdownItems} />
 				</div>
 			</div>
