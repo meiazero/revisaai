@@ -3,7 +3,7 @@ import { Icons } from "./icons";
 
 export default function Footer() {
 	return (
-		<footer className="flex flex-col items-center justify-center gap-2 border-t border-zinc-300 py-2">
+		<footer className="flex flex-col items-center justify-center gap-2 border-t border-zinc-300 bg-white py-2">
 			<div className="flex flex-row items-center gap-2 text-muted-foreground">
 				<p>&copy; 2024 Todos os direitos reservados |</p>
 				<Icons.logo className="h-6 w-auto" />

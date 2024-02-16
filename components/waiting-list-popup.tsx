@@ -12,7 +12,7 @@ import { cn } from "@/lib/utils";
 import { Mail } from "lucide-react";
 import { Button } from "./ui/button";
 import { Separator } from "./ui/separator";
-import WaitingListForm from "./waiting-list-form";
+import { WaitingListForm } from "./waiting-list-form";
 
 interface WaitingListPopupProps {
 	className?: string;

@@ -2,7 +2,7 @@ import { Icons } from "@/components/icons";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 
-export default function Page() {
+export default function NotFound() {
 	return (
 		<div className="flex min-h-[calc(100vh-10rem)] flex-col items-center justify-center space-y-8">
 			<div className="flex flex-col gap-2 md:gap-4">
